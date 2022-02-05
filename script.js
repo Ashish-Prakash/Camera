@@ -16,10 +16,6 @@ let mediaRecorder;
     console.log("Inside on data available");
     console.log(e.data);
     let videoObject = new Blob([e.data], { type: "video/mp4" });
-    // console.log(videoObject);
-    // videoObject/imageObject => URL
-    // aTag
-
     let videoURL = URL.createObjectURL(videoObject);
     let aTag = document.createElement("a");
     aTag.download = `Video${Date.now()}.mp4`;
@@ -32,13 +28,10 @@ let mediaRecorder;
 
   recordButton.addEventListener("click", function () {
     if (recordingState) {
-      // already recording is going on
-      // stop the recording
       mediaRecorder.stop();
       recordingState = false;
       recordButton.classList.remove("animate-record");
     } else {
-      // start the recording
       mediaRecorder.start();
       recordingState = true;
       recordButton.classList.add("animate-record");      
@@ -51,8 +44,6 @@ let mediaRecorder;
     setTimeout( function(){
       capturePhoto.classList.remove("animate-capture");
     }   , 1000  );
-
-    //   canvas
     let canvas = document.createElement("canvas");
     canvas.width = 640; //video width
     canvas.height = 480; // video height
