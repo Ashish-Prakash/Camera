@@ -6,10 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PepSnap</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="https://www.pngarts.com/files/10/Camera-Logo-Download-Transparent-PNG-Image.png">
   </head>
   <body>
     <div class="video-container">
       <video autoplay></video>
+    </div>
+    <div class="filters">
+      <div class="filter one" style="background-color: 	rgb(255, 255, 0, 0.2);"></div>
+      <div class="filter two" style="background-color: rgba(17, 1, 1, 0.575);"></div>
+      <div class="filter three" style="background-color: rgb(102, 0, 255, 0.2);"></div>
+      <div class="filter four" style="background-color: rgba(2, 154, 255, 0.2);"></div>
+      <div class="filter five" style="background-color: rgb(252, 8, 8, 0.2);"></div>
+      <div class="filter"></div>
     </div>
     <div class="controls">
       <div id="record">
@@ -19,6 +28,7 @@
         <div class="inner-capture"></div>
       </div>
     </div>
+    <script src="./filter.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>

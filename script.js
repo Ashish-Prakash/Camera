@@ -45,9 +45,8 @@ let mediaRecorder;
       capturePhoto.classList.remove("animate-capture");
     }   , 1000  );
     let canvas = document.createElement("canvas");
-    canvas.width = 640; //video width
-    canvas.height = 480; // video height
-
+    canvas.width = 640; 
+    canvas.height = 480;     
     let ctx = canvas.getContext("2d");
     ctx.drawImage(videoElement, 0, 0);
     let aTag = document.createElement("a");
