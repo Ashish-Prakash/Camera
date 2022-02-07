@@ -48,6 +48,11 @@ let mediaRecorder;
     canvas.width = 640; 
     canvas.height = 480;     
     let ctx = canvas.getContext("2d");
+    if(currentscale != 1){
+      ctx.translate(canvas.width/2, canvas.height/2);
+      ctx.scale(currentscale, currentscale);
+      ctx.translate(-canvas.width/2, -canvas.height/2); 
+    }
     ctx.drawImage(videoElement, 0, 0);
     if(selectedfilter != "none"){
       ctx.fillStyle = selectedfilter;
