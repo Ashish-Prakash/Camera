@@ -49,6 +49,10 @@ let mediaRecorder;
     canvas.height = 480;     
     let ctx = canvas.getContext("2d");
     ctx.drawImage(videoElement, 0, 0);
+    if(selectedfilter != "none"){
+      ctx.fillStyle = selectedfilter;
+      ctx.fillRect(0,0,canvas.width, canvas.height);
+    }
     let aTag = document.createElement("a");
     aTag.download = `Image${Date.now()}.jpg`;
     aTag.href = canvas.toDataURL("image/jpg");
