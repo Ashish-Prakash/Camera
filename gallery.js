@@ -42,46 +42,61 @@ function appendPhoto(mediaObj) {
     let mediaDiv = document.createElement("div");
     mediaDiv.classList.add("media-div");
     mediaDiv.innerHTML = `<img class="media-img" src=${mediaObj.url} alt="">
-      <div class="media-buttons">
-          <div class="download-media">
-            <i class="fas fa-download"></i>
-          </div>
-          <div class="delete-media">
-            <i class="fas fa-trash"></i>
-          </div>
-      </div>`;
-    mediaDiv
-      .querySelector(".download-media")
-      .addEventListener("click", function () {
+        <div class="media-buttons">
+            <div class="download-media">
+            <i id ="dwl" class="fas fa-download"></i>
+            </div>
+            <div class="delete-media">
+            <i id ="del" class="fas fa-trash"></i>
+            </div>
+        </div>`;
+    mediaDiv.querySelector("#dwl").addEventListener("click", function () {
         downloadMedia(mediaObj);
-      });
-    mediaDiv
-      .querySelector(".delete-media")
-      .addEventListener("click", function () {
+        });
+    mediaDiv.querySelector("#del").addEventListener("click", function () {
         deleteMedia(mediaObj, mediaDiv);
-      });
-  
+        });
+
     document.querySelector(".gallery").append(mediaDiv);
-  }
-  
-  function appendVideo(mediaObj) {
+}
+function appendVideo(mediaObj) {
     let mediaDiv = document.createElement("div");
     mediaDiv.classList.add("media-div");
     mediaDiv.innerHTML = `<video class="media-video" controls autoplay loop></video>
-      <div class="media-buttons">
-          <div class="download-media">Download</div>
-          <div class="delete-media">Delete</div>
-      </div>`;
+        <div class="media-buttons">
+            <div class="download-media">Download</div>
+            <div class="delete-media">Delete</div>
+        </div>`;
     mediaDiv.querySelector("video").src = URL.createObjectURL(mediaObj.url);
     mediaDiv
-      .querySelector(".download-media")
-      .addEventListener("click", function () {
+        .querySelector(".download-media")
+        .addEventListener("click", function () {
         downloadMedia(mediaObj);
-      });
+        });
     mediaDiv
-      .querySelector(".delete-media")
-      .addEventListener("click", function () {
+        .querySelector(".delete-media")
+        .addEventListener("click", function () {
         deleteMedia(mediaObj, mediaDiv);
-      });
+        });
     document.querySelector(".gallery").append(mediaDiv);
-  }
+}
+
+function downloadMedia(mediaObj){
+    let aTag = document.createElement("a");
+    if(mediaObj.type == "photo"){
+        aTag.download = `${mediaObj.mid}.jpg`
+        aTag.href = mediaObj.url;
+    }
+    else{
+        aTag.download = `${mediaObj.mid}.mp4`;
+        aTag.href = URL.createObjectURL(mediaObj.url);
+    }
+    aTag.click();
+}
+function deleteMedia(mediaObj, mediaDiv){
+    let mid = mediaObj.mid;
+    let txnObject = db.transaction("Media", "readwrite");
+    let mediaTable = txnObject.objectStore("Media");
+    mediaTable.delete(mid);
+    mediaDiv.remove();
+}
