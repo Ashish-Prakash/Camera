@@ -3,6 +3,8 @@ let recordButton = document.querySelector(".inner-record");
 let capturePhoto = document.querySelector(".inner-capture");
 let recordingState = false;
 let mediaRecorder;
+let audio = new Audio("capturesound.mp3");
+let vaudio = new Audio("videorecord.mp3");
 
 (async function () {
   let constraint = { video: true };
@@ -55,6 +57,7 @@ function capturePhotoFun() {
   // aTag.click();
   let canvasUrl = canvas.toDataURL("image.jpg");
   addMedia(canvasUrl, "photo");
+  audio.play();
 }
 function recordMediaFun() {
   if (recordingState) {
@@ -66,6 +69,7 @@ function recordMediaFun() {
     recordingState = true;
     recordButton.classList.add("animate-record");      
   }
+  vaudio.play();
 }
 function addMedia(mediaUrl, mediaType){
   let tnxObject = db.transaction("Media", "readwrite");
