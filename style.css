@@ -48,6 +48,7 @@ video {
     width: 70%;
     background: red;
     border-radius: 50%;
+    cursor: pointer;
 }
 #capture {
     border: 5px solid black;
@@ -58,6 +59,7 @@ video {
     width: 70%;
     background: black;
     border-radius: 50%;
+    cursor: pointer;
 }
 .animate-record{
     animation-name: scaleInScaleOut;
@@ -66,7 +68,7 @@ video {
 }
 .animate-capture{
     animation-name: scaleInScaleOut;
-    animation-duration: 1s;
+    animation-duration: 300ms;
     animation-iteration-count: 1;
 }
 .filters{
@@ -106,8 +108,9 @@ video {
 }
 
 .fas {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: black;
+
 }
 .gallery-btn{
     position: fixed;
