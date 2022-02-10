@@ -64,8 +64,12 @@ function appendVideo(mediaObj) {
     mediaDiv.classList.add("media-div");
     mediaDiv.innerHTML = `<video class="media-video" controls autoplay loop></video>
         <div class="media-buttons">
-            <div class="download-media">Download</div>
-            <div class="delete-media">Delete</div>
+            <div class="download-media">
+            <i id ="dwl" class="fas fa-download"></i>
+            </div>
+            <div class="delete-media">
+            <i id ="del" class="fas fa-trash"></i>
+            </div>
         </div>`;
     mediaDiv.querySelector("video").src = URL.createObjectURL(mediaObj.url);
     mediaDiv
